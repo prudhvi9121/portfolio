@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { FaCode, FaTools, FaLightbulb } from 'react-icons/fa';
-import { 
+import { FaCode, FaTools, FaLightbulb, FaPaintBrush, FaBullhorn, FaVideo } from 'react-icons/fa';
+import {
   DiJavascript, DiPython, DiJava, DiReact, DiMongodb, DiGit, DiCss3,
   DiHtml5, DiNodejs, DiDatabase
 } from 'react-icons/di';
-import { 
-  SiCplusplus, SiExpress, SiTypescript, SiRedux, 
-  SiTailwindcss, SiBootstrap, SiMysql
+import {
+  SiCplusplus, SiExpress, SiTypescript, SiRedux,
+  SiTailwindcss, SiBootstrap, SiMysql, SiFigma, SiAdobexd,
+  SiCanva
 } from 'react-icons/si';
 
 const Skills = () => {
@@ -20,7 +21,7 @@ const Skills = () => {
       { name: 'TypeScript', icon: SiTypescript },
       { name: 'SQL', icon: DiDatabase }
     ],
-    'Tools & Technologies': [
+    'Web Development': [
       { name: 'React.js', icon: DiReact },
       { name: 'Node.js', icon: DiNodejs },
       { name: 'Express.js', icon: SiExpress },
@@ -33,26 +34,37 @@ const Skills = () => {
       { name: 'Bootstrap', icon: SiBootstrap },
       { name: 'Git', icon: DiGit }
     ],
-    'Areas of Interest': [
-      { name: 'Problem Solving', icon: FaCode },
-      { name: 'Competitive Programming', icon: FaLightbulb },
-      { name: 'Object-Oriented Programming', icon: FaCode },
-      { name: 'Data Structures and Algorithms', icon: FaCode }
+    'UI/UX Design': [
+      { name: 'Figma', icon: SiFigma },
+      { name: 'Adobe XD', icon: SiAdobexd },
+      { name: 'Wireframing', icon: FaPaintBrush },
+      { name: 'Prototyping', icon: FaTools },
+      { name: 'User Research', icon: FaLightbulb },
+      { name: 'Canva', icon: SiCanva }
+    ],
+
+    'Video Editing': [
+      { name: 'DaVinci Resolve', icon: FaVideo },
+      { name: 'Motion Graphics', icon: FaVideo },
+      { name: 'Color Grading', icon: FaPaintBrush },
+      { name: 'Sound Design', icon: FaTools }
     ]
   };
 
   const categoryIcons = {
     'Programming Languages': FaCode,
-    'Tools & Technologies': FaTools,
-    'Areas of Interest': FaLightbulb
+    'Web Development': FaTools,
+    'UI/UX Design': FaPaintBrush,
+    'Digital Marketing': FaBullhorn,
+    'Video Editing': FaVideo
   };
 
   return (
     <SkillsSection id="skills">
       <SectionTitle data-aos="fade-up">
-        Technical <GradientText>Skills</GradientText>
+        Technical <HighlightText>Skills</HighlightText>
       </SectionTitle>
-      
+
       <SkillsContainer>
         {Object.entries(skills).map(([category, skillList], index) => {
           const CategoryIcon = categoryIcons[category];
@@ -62,7 +74,7 @@ const Skills = () => {
               as={motion.div}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <CategoryHeader>
                 <IconBox>
@@ -76,7 +88,7 @@ const Skills = () => {
                   <SkillCard
                     key={skill.name}
                     as={motion.div}
-                    whileHover={{ y: -5, scale: 1.02 }}
+                    whileHover={{ y: -3, scale: 1.02 }}
                     transition={{ duration: 0.2 }}
                   >
                     <SkillIcon>
@@ -97,13 +109,25 @@ const Skills = () => {
 const SkillsSection = styled.section`
   padding: 5rem 2rem;
   min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
+  background: #ffffff;
 `;
 
-const GradientText = styled.span`
-  background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+const HighlightText = styled.span`
+  color: #000000;
+  position: relative;
+  display: inline-block;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    height: 12px;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: -1;
+    transform: skewY(-1deg);
+  }
 `;
 
 const SectionTitle = styled.h2`
@@ -111,6 +135,7 @@ const SectionTitle = styled.h2`
   font-size: 2.8rem;
   margin-bottom: 4rem;
   font-weight: 700;
+  color: #000000;
 `;
 
 const SkillsContainer = styled.div`
@@ -122,12 +147,17 @@ const SkillsContainer = styled.div`
 `;
 
 const SkillCategory = styled.div`
-  background: rgba(255, 255, 255, 0.95);
+  background: #ffffff;
   padding: 2.5rem;
-  border-radius: 20px;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 0;
+  border: 2px solid #000000;
+  box-shadow: 5px 5px 0px rgba(0, 0, 0, 1);
+  transition: all 0.2s ease;
+  
+  &:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 1);
+  }
 `;
 
 const CategoryHeader = styled.div`
@@ -135,24 +165,28 @@ const CategoryHeader = styled.div`
   align-items: center;
   gap: 1rem;
   margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #000000;
 `;
 
 const IconBox = styled.div`
   width: 50px;
   height: 50px;
-  background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
-  border-radius: 12px;
+  background: #000000;
+  border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   font-size: 1.5rem;
+  border: 2px solid #000000;
 `;
 
 const CategoryTitle = styled.h3`
   font-size: 1.8rem;
-  color: #2d3436;
+  color: #000000;
   font-weight: 600;
+  font-family: 'Space Grotesk', sans-serif;
 `;
 
 const SkillsGrid = styled.div`
@@ -168,35 +202,33 @@ const SkillsGrid = styled.div`
 const SkillCard = styled.div`
   background: white;
   padding: 1.5rem;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border-radius: 0;
+  border: 2px solid #000000;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 1);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
   cursor: pointer;
+  transition: all 0.2s ease;
   
   &:hover {
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 1px 0px rgba(0, 0, 0, 1);
   }
 `;
 
 const SkillIcon = styled.div`
   font-size: 2.5rem;
-  color: #84fab0;
+  color: #000000;
   transition: transform 0.3s ease;
   
   ${SkillCard}:hover & {
     transform: scale(1.1);
   }
-  
-  svg {
-    filter: drop-shadow(0 4px 6px rgba(132, 250, 176, 0.3));
-  }
 `;
 
 const SkillName = styled.h4`
-  color: #2d3436;
+  color: #000000;
   font-size: 0.9rem;
   font-weight: 500;
   text-align: center;

@@ -5,7 +5,6 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
-import Experience from './components/Experience';
 import Contact from './components/Contact';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -22,18 +21,43 @@ function App() {
     <AppContainer>
       <Navbar />
       <Hero />
-      <About />
       <Projects />
+      <About />
       <Skills />
-      <Experience />
       <Contact />
     </AppContainer>
   );
 }
 
 const AppContainer = styled.div`
-  background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
+  background: #ffffff;
   min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.015) 2px,
+        rgba(0, 0, 0, 0.015) 4px
+      );
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  > * {
+    position: relative;
+    z-index: 2;
+  }
 `;
 
 export default App;

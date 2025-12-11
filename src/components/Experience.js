@@ -14,9 +14,9 @@ const Experience = () => {
   return (
     <ExperienceSection id="experience">
       <SectionTitle data-aos="fade-up">
-        Professional <GradientText>Experience</GradientText>
+        Professional <HighlightText>Experience</HighlightText>
       </SectionTitle>
-      
+
       <ContentWrapper>
         <ExperienceCard
           as={motion.div}
@@ -68,7 +68,7 @@ const Experience = () => {
               <CertificationCard
                 key={index}
                 as={motion.div}
-                whileHover={{ scale: 1.03 }}
+                whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.2 }}
               >
                 <CertIcon>
@@ -78,7 +78,7 @@ const Experience = () => {
                   <CertTitle>{cert.title}</CertTitle>
                   <CertIssuer>{cert.issuer}</CertIssuer>
                 </CertContent>
-                <GlowEffect />
+                <TopBorder />
               </CertificationCard>
             ))}
           </CertificationsGrid>
@@ -91,7 +91,7 @@ const Experience = () => {
 const ExperienceSection = styled.section`
   padding: 5rem 2rem;
   min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
+  background: #f8f8f8;
 `;
 
 const ContentWrapper = styled.div`
@@ -104,22 +104,40 @@ const SectionTitle = styled.h2`
   font-size: 2.8rem;
   margin-bottom: 4rem;
   font-weight: 700;
+  color: #000000;
 `;
 
-const GradientText = styled.span`
-  background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+const HighlightText = styled.span`
+  color: #000000;
+  position: relative;
+  display: inline-block;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    height: 12px;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: -1;
+    transform: skewY(-1deg);
+  }
 `;
 
 const ExperienceCard = styled.div`
-  background: rgba(255, 255, 255, 0.95);
+  background: #ffffff;
   padding: 2.5rem;
-  border-radius: 20px;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 0;
+  border: 2px solid #000000;
+  box-shadow: 5px 5px 0px rgba(0, 0, 0, 1);
   margin-bottom: 3rem;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 1);
+  }
 `;
 
 const ExperienceHeader = styled.div`
@@ -127,29 +145,33 @@ const ExperienceHeader = styled.div`
   align-items: center;
   gap: 1.5rem;
   margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid #000000;
 `;
 
 const IconBox = styled.div`
   width: 60px;
   height: 60px;
-  background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
-  border-radius: 15px;
+  background: #000000;
+  border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   font-size: 1.8rem;
-  box-shadow: 0 4px 15px rgba(132, 250, 176, 0.3);
+  border: 2px solid #000000;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.3);
 `;
 
 const ExperienceTitle = styled.h3`
   font-size: 1.8rem;
-  color: #2d3436;
+  color: #000000;
   margin-bottom: 0.5rem;
+  font-family: 'Space Grotesk', sans-serif;
 `;
 
 const ExperienceDate = styled.p`
-  color: #636e72;
+  color: #666666;
   font-size: 1.1rem;
 `;
 
@@ -163,12 +185,13 @@ const HighlightItem = styled.div`
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  color: #2d3436;
+  color: #000000;
   font-size: 1.1rem;
+  font-weight: 600;
 `;
 
 const HighlightIcon = styled.span`
-  color: #84fab0;
+  color: #000000;
 `;
 
 const ExperienceDetails = styled.div`
@@ -181,7 +204,7 @@ const DetailItem = styled.div`
   display: flex;
   align-items: flex-start;
   gap: 1rem;
-  color: #2d3436;
+  color: #333333;
   font-size: 1.1rem;
   line-height: 1.6;
 `;
@@ -189,9 +212,10 @@ const DetailItem = styled.div`
 const DetailBullet = styled.div`
   width: 8px;
   height: 8px;
-  background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
-  border-radius: 50%;
+  background: #000000;
+  border-radius: 0;
   margin-top: 0.5rem;
+  flex-shrink: 0;
 `;
 
 const CertificationsSection = styled.div`
@@ -200,14 +224,15 @@ const CertificationsSection = styled.div`
 
 const SectionSubtitle = styled.h3`
   font-size: 2rem;
-  color: #2d3436;
+  color: #000000;
   margin-bottom: 2rem;
   display: flex;
   align-items: center;
   gap: 1rem;
+  font-family: 'Space Grotesk', sans-serif;
   
   svg {
-    color: #84fab0;
+    color: #000000;
   }
 `;
 
@@ -221,25 +246,32 @@ const CertificationCard = styled.div`
   position: relative;
   background: white;
   padding: 2rem;
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 0;
+  border: 2px solid #000000;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 1);
   display: flex;
   align-items: center;
   gap: 1.5rem;
   overflow: hidden;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 1);
+  }
 `;
 
 const CertIcon = styled.div`
   width: 50px;
   height: 50px;
-  background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
-  border-radius: 12px;
+  background: #000000;
+  border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   font-size: 1.5rem;
   flex-shrink: 0;
+  border: 2px solid #000000;
 `;
 
 const CertContent = styled.div`
@@ -247,23 +279,24 @@ const CertContent = styled.div`
 `;
 
 const CertTitle = styled.h4`
-  color: #2d3436;
+  color: #000000;
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
+  font-family: 'Space Grotesk', sans-serif;
 `;
 
 const CertIssuer = styled.p`
-  color: #636e72;
+  color: #666666;
   font-size: 0.9rem;
 `;
 
-const GlowEffect = styled.div`
+const TopBorder = styled.div`
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #84fab0 0%, #8fd3f4 100%);
+  height: 4px;
+  background: #000000;
 `;
 
 export default Experience;

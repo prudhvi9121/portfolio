@@ -23,7 +23,7 @@ const Navbar = () => {
         <LogoContainer>
           <Logo
             as={motion.div}
-            whileHover={{ scale: 1.1 }}
+            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             PK
@@ -31,7 +31,7 @@ const Navbar = () => {
         </LogoContainer>
 
         <NavItems>
-          {['home', 'about', 'projects', 'skills', 'experience', 'contact'].map((item) => (
+          {['home', 'about', 'projects', 'skills', 'contact'].map((item) => (
             <NavItem key={item}>
               <NavLink
                 to={item}
@@ -55,14 +55,6 @@ const Navbar = () => {
             </NavItem>
           ))}
         </NavItems>
-
-        {/* <ContactButton
-          as={motion.button}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          Let's Connect
-        </ContactButton> */}
       </NavContent>
     </Nav>
   );
@@ -77,9 +69,9 @@ const Nav = styled.nav`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: ${props => props.scrolled ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.85)'};
+  background: ${props => props.scrolled ? '#ffffff' : 'rgba(255, 255, 255, 0.95)'};
   backdrop-filter: blur(10px);
-  box-shadow: ${props => props.scrolled ? '0 2px 20px rgba(0,0,0,0.1)' : 'none'};
+  border-bottom: 2px solid #000000;
   transition: all 0.3s ease;
   z-index: 1000;
 `;
@@ -99,11 +91,20 @@ const LogoContainer = styled.div`
 
 const Logo = styled.div`
   font-size: 2rem;
-  font-weight: bold;
-  background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+  color: #000000;
   cursor: pointer;
+  font-family: 'Space Grotesk', sans-serif;
+  border: 3px solid #000000;
+  padding: 0.3rem 1rem;
+  display: inline-block;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 1);
+  transition: all 0.2s ease;
+  
+  &:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px rgba(0, 0, 0, 1);
+  }
 `;
 
 const NavItems = styled.ul`
@@ -123,21 +124,22 @@ const NavItem = styled.li`
 `;
 
 const NavLink = styled(Link)`
-  color: ${props => props.isActive ? '#2d3436' : '#666'};
+  color: ${props => props.isActive ? '#000000' : '#666666'};
   text-decoration: none;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: ${props => props.isActive ? '600' : '500'};
   padding: 0.5rem 0;
   position: relative;
   cursor: pointer;
-  transition: color 0.3s ease;
+  transition: all 0.2s ease;
+  font-family: 'Space Grotesk', sans-serif;
 
   &:hover {
-    color: #2d3436;
+    color: #000000;
   }
 
   &.active {
-    color: #2d3436;
+    color: #000000;
   }
 `;
 
@@ -147,29 +149,8 @@ const ActiveIndicator = styled.div`
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
-  border-radius: 2px;
-`;
-
-const ContactButton = styled.button`
-  background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
-  color: white;
-  border: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 50px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(132, 250, 176, 0.3);
-
-  &:hover {
-    box-shadow: 0 6px 20px rgba(132, 250, 176, 0.4);
-  }
-
-  @media (max-width: 768px) {
-    display: none;
-  }
+  background: #000000;
+  border-radius: 0;
 `;
 
 export default Navbar;

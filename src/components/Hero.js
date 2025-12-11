@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
-import profileImg from '../assets/photo1.JPG';
+import profileImg from '../assets/sketch-photo.png';
 import { FaFileDownload } from 'react-icons/fa';
 
 const Hero = () => {
@@ -19,20 +19,20 @@ const Hero = () => {
               Hi, I'm <Highlight>Prudhvi Karri</Highlight>
             </Title>
             <Subtitle>
-              <TypewriterText>A passionate developer building amazing web experiences</TypewriterText>
+              <TypewriterText>Developer • Designer • Creative</TypewriterText>
             </Subtitle>
-            
+
             <CTAButton
               as={motion.button}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => window.open('https://drive.google.com/file/d/1C5fxEWYLkC36ksGBYv7OsJR7jkPONOki/view?usp=sharing', '_blank')}
+              onClick={() => window.open('https://wa.me/919704181692?text=Hi!%20I%20want%20to%20connect', '_blank')}
             >
-              Resume
+              Contact Me
             </CTAButton>
           </motion.div>
 
-          <StatsContainer
+          {/* <StatsContainer
             as={motion.div}
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -53,7 +53,7 @@ const Hero = () => {
               <StatNumber>3 Star</StatNumber>
               <StatLabel>CodeChef</StatLabel>
             </StatCard>
-          </StatsContainer>
+          </StatsContainer> */}
         </TextSection>
 
         <ImageSection>
@@ -80,6 +80,14 @@ const HeroContainer = styled.section`
   padding: 2rem;
   position: relative;
   overflow: hidden;
+  background: transparent;
+  
+  @media (max-width: 768px) {
+    padding: 1rem;
+    min-height: auto;
+    padding-top: 100px;
+    padding-bottom: 3rem;
+  }
 `;
 
 const BackgroundGradient = styled.div`
@@ -88,7 +96,7 @@ const BackgroundGradient = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(132,250,176,0.1) 0%, rgba(143,211,244,0.1) 100%);
+  background: transparent;
   z-index: -1;
 `;
 
@@ -99,11 +107,18 @@ const ContentWrapper = styled.div`
   max-width: 1400px;
   margin: 0 auto;
   gap: 4rem;
+  width: 100%;
   
   @media (max-width: 968px) {
-    flex-direction: column-reverse;
+    flex-direction: column;
     text-align: center;
     gap: 2rem;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 1.5rem;
   }
 `;
 
@@ -116,66 +131,127 @@ const ImageSection = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 `;
 
 const Greeting = styled.span`
   display: block;
-  font-size: 1.2rem;
-  color: #64ffda;
+  font-size: 1rem;
+  color: #666666;
   margin-bottom: 1rem;
   letter-spacing: 2px;
   text-transform: uppercase;
+  font-weight: 500;
+  
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+  }
 `;
 
 const Title = styled.h1`
-  font-size: 3.5rem;
+  font-size: 4rem;
   margin-bottom: 1rem;
+  color: #000000;
+  font-family: 'Space Grotesk', sans-serif;
+  line-height: 1.2;
   
   @media (max-width: 768px) {
-    font-size: 2.5rem;
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.75rem;
   }
 `;
 
 const Highlight = styled.span`
-  background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #000000;
+  font-weight: 800;
+  position: relative;
+  display: inline-block;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    height: 15px;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: -1;
+    transform: skewY(-2deg);
+    
+    @media (max-width: 768px) {
+      bottom: 5px;
+      height: 8px;
+    }
+  }
 `;
 
 const Subtitle = styled.p`
   font-size: 1.5rem;
-  color: #666;
+  color: #333333;
   margin-bottom: 2rem;
+  font-weight: 400;
   
   @media (max-width: 768px) {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1rem;
   }
 `;
 
 const TypewriterText = styled.span`
-  border-right: 2px solid #64ffda;
+  border-right: 2px solid #000000;
   animation: blink 0.7s step-end infinite;
+  padding-right: 5px;
   
   @keyframes blink {
     from, to { border-color: transparent }
-    50% { border-color: #64ffda; }
+    50% { border-color: #000000; }
   }
 `;
 
 const CTAButton = styled.button`
-  background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
-  border: none;
-  padding: 1rem 2rem;
-  border-radius: 50px;
-  color: white;
-  font-size: 1.1rem;
+  background: #000000;
+  border: 2px solid #000000;
+  padding: 1.2rem 3rem;
+  border-radius: 0;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
   margin-top: 2rem;
   cursor: pointer;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+  font-family: 'Space Grotesk', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 
   &:hover {
-    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+  }
+  
+  &:active {
+    transform: translate(4px, 4px);
+    box-shadow: none;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 1rem 2rem;
+    font-size: 0.9rem;
+    margin-top: 1.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.85rem 1.75rem;
+    font-size: 0.85rem;
   }
 `;
 
@@ -187,43 +263,73 @@ const StatsContainer = styled.div`
   @media (max-width: 768px) {
     justify-content: center;
     flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
   }
 `;
 
 const StatCard = styled.div`
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  background: #ffffff;
+  border: 2px solid #000000;
   padding: 1.5rem;
-  border-radius: 20px;
+  border-radius: 0;
   text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: transform 0.3s ease;
+  transition: all 0.2s ease;
+  min-width: 120px;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 1);
 
   &:hover {
-    transform: translateY(-5px);
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px rgba(0, 0, 0, 1);
+  }
+  
+  @media (max-width: 768px) {
+    padding: 1rem;
+    min-width: 100px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.75rem;
+    min-width: 90px;
   }
 `;
 
 const StatIcon = styled.div`
   font-size: 2rem;
   margin-bottom: 0.5rem;
-`;
-
-const StatNumber = styled.h2`
-  font-size: 2rem;
-  color: #2d3436;
-  margin-bottom: 0.5rem;
+  filter: grayscale(100%);
   
   @media (max-width: 768px) {
     font-size: 1.5rem;
   }
 `;
 
-const StatLabel = styled.p`
-  color: #636e72;
+const StatNumber = styled.h2`
+  font-size: 2rem;
+  color: #000000;
+  margin-bottom: 0.5rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
   
   @media (max-width: 768px) {
-    font-size: 0.9rem;
+    font-size: 1.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.25rem;
+  }
+`;
+
+const StatLabel = styled.p`
+  color: #666666;
+  font-size: 0.9rem;
+  
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.75rem;
   }
 `;
 
@@ -233,8 +339,13 @@ const ProfileImageWrapper = styled.div`
   height: 400px;
   
   @media (max-width: 968px) {
-    width: 300px;
-    height: 300px;
+    width: 280px;
+    height: 280px;
+  }
+  
+  @media (max-width: 480px) {
+    width: 240px;
+    height: 240px;
   }
 `;
 
@@ -242,29 +353,45 @@ const ProfileImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  border-radius: 0;
   position: relative;
   z-index: 1;
   transition: transform 0.3s ease;
+  border: 3px solid #000000;
+  box-shadow: 8px 8px 0px rgba(0, 0, 0, 1);
+  background: #ffffff;
 
   &:hover {
-    transform: scale(1.05);
+    transform: translate(4px, 4px);
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 1);
+  }
+  
+  @media (max-width: 768px) {
+    border: 2px solid #000000;
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 1);
+    
+    &:hover {
+      transform: translate(3px, 3px);
+      box-shadow: 3px 3px 0px rgba(0, 0, 0, 1);
+    }
   }
 `;
 
 const ProfileImageBorder = styled.div`
   position: absolute;
-  top: -10px;
-  left: -10px;
-  right: -10px;
-  bottom: -10px;
-  border: 2px solid #64ffda;
-  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-  animation: rotate 10s linear infinite;
+  top: -15px;
+  left: -15px;
+  right: 15px;
+  bottom: 15px;
+  border: 2px solid #000000;
+  border-radius: 0;
+  z-index: 0;
   
-  @keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+  @media (max-width: 768px) {
+    top: -10px;
+    left: -10px;
+    right: 10px;
+    bottom: 10px;
   }
 `;
 

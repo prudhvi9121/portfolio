@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaEnvelope, FaPhone } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaPhone, FaInstagram } from 'react-icons/fa';
 
 const Contact = () => {
   const containerVariants = {
@@ -47,7 +47,7 @@ const Contact = () => {
           <ContactCard
             as={motion.div}
             variants={cardVariants}
-            whileHover={{ y: -10, scale: 1.02 }}
+            whileHover={{ y: -5, scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
             <CardContent href="mailto:prudhvikarri9121@gmail.com">
@@ -64,7 +64,7 @@ const Contact = () => {
           <ContactCard
             as={motion.div}
             variants={cardVariants}
-            whileHover={{ y: -10, scale: 1.02 }}
+            whileHover={{ y: -5, scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
             <CardContent href="tel:+919704181692">
@@ -81,7 +81,7 @@ const Contact = () => {
           <ContactCard
             as={motion.div}
             variants={cardVariants}
-            whileHover={{ y: -10, scale: 1.02 }}
+            whileHover={{ y: -5, scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
             <CardContent href="https://www.linkedin.com/in/prudhvi-karri/" target="_blank">
@@ -98,7 +98,7 @@ const Contact = () => {
           <ContactCard
             as={motion.div}
             variants={cardVariants}
-            whileHover={{ y: -10, scale: 1.02 }}
+            whileHover={{ y: -5, scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
             <CardContent href="https://github.com/prudhvi9121" target="_blank">
@@ -108,6 +108,23 @@ const Contact = () => {
               <ContactInfo>
                 <ContactType>GitHub</ContactType>
                 <ContactDetail>View My Projects</ContactDetail>
+              </ContactInfo>
+            </CardContent>
+          </ContactCard>
+
+          <ContactCard
+            as={motion.div}
+            variants={cardVariants}
+            whileHover={{ y: -5, scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <CardContent href="https://www.instagram.com/non_cinematic/" target="_blank">
+              <IconWrapper className="instagram">
+                <FaInstagram />
+              </IconWrapper>
+              <ContactInfo>
+                <ContactType>Instagram</ContactType>
+                <ContactDetail>@non_cinematic</ContactDetail>
               </ContactInfo>
             </CardContent>
           </ContactCard>
@@ -126,7 +143,7 @@ const ContactSection = styled.section`
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background: linear-gradient(135deg, rgba(132,250,176,0.1) 0%, rgba(143,211,244,0.1) 100%);
+  background: #ffffff;
 `;
 
 const ContentWrapper = styled.div`
@@ -141,22 +158,39 @@ const HeaderSection = styled.div`
 `;
 
 const SectionTitle = styled.h2`
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin-bottom: 1rem;
-  color: #2d3436;
+  color: #000000;
+  font-family: 'Space Grotesk', sans-serif;
 `;
 
 const TitleAccent = styled.span`
   display: block;
-  background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-size: 3.5rem;
+  color: #000000;
+  font-size: 3rem;
+  position: relative;
+  margin-top: 0.5rem;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 15px;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: -1;
+    
+    @media (max-width: 768px) {
+      width: 150px;
+    }
+  }
 `;
 
 const SectionDescription = styled.p`
   font-size: 1.2rem;
-  color: #636e72;
+  color: #666666;
   max-width: 600px;
   margin: 0 auto;
 `;
@@ -169,12 +203,16 @@ const ContactGrid = styled.div`
 `;
 
 const ContactCard = styled.div`
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 20px;
+  background: #ffffff;
+  border-radius: 0;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 2px solid #000000;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 1);
+  transition: all 0.2s ease;
+  
+  &:hover {
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 1);
+  }
 `;
 
 const CardContent = styled.a`
@@ -189,12 +227,14 @@ const CardContent = styled.a`
 const IconWrapper = styled.div`
   width: 60px;
   height: 60px;
-  border-radius: 50%;
+  border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+  background: #000000;
   margin-right: 1.5rem;
+  border: 2px solid #000000;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
   
   svg {
     font-size: 1.8rem;
@@ -202,11 +242,18 @@ const IconWrapper = styled.div`
   }
 
   &.linkedin {
-    background: linear-gradient(120deg, #0077B5 0%, #00A0DC 100%);
+    background: #0077B5;
+    border-color: #0077B5;
   }
 
   &.github {
-    background: linear-gradient(120deg, #24292E 0%, #404448 100%);
+    background: #24292E;
+    border-color: #24292E;
+  }
+  
+  &.instagram {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    border-color: #dc2743;
   }
 `;
 
@@ -217,11 +264,12 @@ const ContactInfo = styled.div`
 const ContactType = styled.h3`
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
-  color: #2d3436;
+  color: #000000;
+  font-family: 'Space Grotesk', sans-serif;
 `;
 
 const ContactDetail = styled.p`
-  color: #636e72;
+  color: #666666;
   font-size: 1rem;
 `;
 
@@ -229,7 +277,8 @@ const FooterText = styled.p`
   text-align: center;
   margin-top: 4rem;
   font-size: 1.2rem;
-  color: #636e72;
+  color: #333333;
+  font-weight: 500;
 `;
 
 export default Contact;
